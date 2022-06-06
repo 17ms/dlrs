@@ -17,10 +17,10 @@ enum Mode {
 }
 
 fn parse_cli_args() -> Result<(PathBuf, String, Mode)> {
-    let matches = Command::new("WGDL-imagescraper written in Rust")
-        .version("0.1.0")
+    let matches = Command::new("Rust-powered image downloader for 4chan")
+        .version("0.2.0")
         .author("Arttu Einistö <einisto@proton.me>")
-        .about("Scrapes images efficiently from 4chan.org")
+        .about("Minimal asynchronous image downloader for 4chan threads/boards")
         .arg(
             Arg::new("output")
                 .short('o')
