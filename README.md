@@ -1,5 +1,5 @@
 <div align="center">
-    <span><img src="https://github.com/einisto/rusty-downloader/blob/main/ferris.png" width="400"></span>
+    <span><img src="https://github.com/einisto/rusty-downloader/blob/main/doc/ferris.png" width="400"></span>
 </div>
 
 ## Rust-powered image downloader for 4chan
@@ -30,3 +30,7 @@ OPTIONS:
     -t, --thread <URL>     Set a thread URL
     -V, --version          Print version information
 ```
+
+### Dependencies
+
+![DependenciesGraph](https://github.com/einisto/rusty-downloader/blob/main/doc/structure.svg)
