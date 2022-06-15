@@ -2,7 +2,7 @@ use colored::Colorize;
 use futures::{stream, StreamExt};
 use reqwest::Client;
 use serde_json::Value;
-use std::path::PathBuf;
+use std::{path::PathBuf, process::exit};
 use tokio::{fs::File, io::AsyncWriteExt};
 
 type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
@@ -12,8 +12,26 @@ pub async fn get_imagelist(
     board_name: &str,
     output_path: &PathBuf,
 ) -> Result<Vec<(String, PathBuf)>> {
-    let req_body = reqwest::get(json_url).await?.text().await?;
-    let json_data: Value = serde_json::from_str(req_body.as_str())?;
+    let req_body_raw = match reqwest::get(json_url).await {
+        Ok(n) => n,
+        Err(_) => {
+            eprintln!("{}", format!("Error requesting {}", json_url).bold().red());
+            exit(0x0100);
+        }
+    };
+    let req_body_text = req_body_raw.text().await?;
+    let json_data: Value = match serde_json::from_str(req_body_text.as_str()) {
+        Ok(n) => n,
+        Err(e) => {
+            eprintln!(
+                "{}",
+                format!("Error parsing json from {}: {}", json_url, e)
+                    .bold()
+                    .red()
+            );
+            exit(0x0100);
+        }
+    };
 
     let mut img_data: Vec<(String, PathBuf)> = Vec::new();
     json_data["posts"]
@@ -57,10 +75,12 @@ pub async fn get_images(img_data: &Vec<(String, PathBuf)>) -> Result<usize> {
                 }
                 Err(_) => eprintln!(
                     "{}",
-                    format!("Error reading bytes from {}", url).bold().red()
+                    format!("Error converting request from {} to bytes", url)
+                        .bold()
+                        .red()
                 ),
             },
-            Err(_) => eprintln!("{}", format!("Error downloading {}", url).bold().red()),
+            Err(_) => eprintln!("{}", format!("Error requesting {}", url).bold().red()),
         }
     }))
     .buffer_unordered(100)
