@@ -1,5 +1,5 @@
 <div align="center">
-    <span><img src="https://github.com/17ms/rusty-downloader/blob/master/doc/ferris.png" width="400"></span>
+    <span><img src="https://github.com/17ms/rusty-downloader/blob/master/docs/ferris.png" width="400"></span>
 </div>
 
 ## Imageboard downloader in Rust
@@ -28,6 +28,3 @@ OPTIONS:
     -V, --version          Print version information
 ```
 
-### Dependencies
-
-![DependenciesGraph](https://github.com/17ms/rusty-downloader/blob/master/doc/structure.svg)
