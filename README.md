@@ -1,14 +1,11 @@
 <div align="center">
-    <span><img src="https://github.com/einisto/rusty-downloader/blob/main/doc/ferris.png" width="400"></span>
+    <span><img src="https://github.com/17ms/rusty-downloader/blob/master/doc/ferris.png" width="400"></span>
 </div>
 
-## Rust-powered image downloader for 4chan
-
-Minimal concurrent image downloader for 4chan threads/boards.
+## Imageboard downloader in Rust
 
 <p align="left">
 <a href="https://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg"></a>
-<a href="https://github.com/einisto"><img src="https://img.shields.io/badge/GitHub-Follow%20on%20GitHub-inactive.svg?logo=github"></a>
 </p>
 
 ### Installation and usage
@@ -33,4 +30,4 @@ OPTIONS:
 
 ### Dependencies
 
-![DependenciesGraph](https://github.com/einisto/rusty-downloader/blob/main/doc/structure.svg)
+![DependenciesGraph](https://github.com/17ms/rusty-downloader/blob/master/doc/structure.svg)
