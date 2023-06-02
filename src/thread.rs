@@ -1,6 +1,6 @@
 pub fn parse_url(url: &str) -> (String, String) {
-    let url_split: Vec<&str> = url.split("/").collect();
-    let thread_id = url_split.get(url_split.len() - 1).unwrap();
+    let url_split: Vec<&str> = url.split('/').collect();
+    let thread_id = url_split.last().unwrap();
     let board_name = url_split.get(url_split.len() - 3).unwrap();
 
     (

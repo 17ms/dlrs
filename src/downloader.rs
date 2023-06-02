@@ -2,7 +2,10 @@ use colored::Colorize;
 use futures::{stream, StreamExt};
 use reqwest::Client;
 use serde_json::Value;
-use std::{path::PathBuf, process::exit};
+use std::{
+    path::{Path, PathBuf},
+    process::exit,
+};
 use tokio::{fs::File, io::AsyncWriteExt};
 
 type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
@@ -10,7 +13,7 @@ type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 pub async fn get_imagelist(
     json_url: &str,
     board_name: &str,
-    output_path: &PathBuf,
+    output_path: &Path,
 ) -> Result<Vec<(String, PathBuf)>> {
     let req_body_raw = match reqwest::get(json_url).await {
         Ok(n) => n,

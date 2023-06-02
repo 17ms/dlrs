@@ -3,7 +3,7 @@ use serde_json::Value;
 type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
 pub fn parse_url(url: &str) -> (String, String) {
-    let url_split: Vec<&str> = url.split("/").collect();
+    let url_split: Vec<&str> = url.split('/').collect();
     let board_name = url_split.get(url_split.len() - 2).unwrap();
 
     (

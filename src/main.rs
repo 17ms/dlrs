@@ -6,7 +6,6 @@ use clap::{Arg, ArgGroup, Command};
 use colored::Colorize;
 use regex::Regex;
 use std::{path::PathBuf, process::exit};
-use tokio;
 
 type Result<T> = std::result::Result<T, Box<dyn std::error::Error>>;
 
@@ -17,10 +16,7 @@ enum Mode {
 }
 
 fn parse_cli_args() -> Result<(PathBuf, String, Mode)> {
-    let matches = Command::new("Rust-powered image downloader for 4chan")
-        .version("0.2.0")
-        .author("Arttu Einistö <einisto@proton.me>")
-        .about("Minimal asynchronous image downloader for 4chan threads/boards")
+    let matches = Command::new("dlrs")
         .arg(
             Arg::new("output")
                 .short('o')
@@ -62,7 +58,7 @@ fn parse_cli_args() -> Result<(PathBuf, String, Mode)> {
     let target = match re.is_match(target_match) {
         true => target_match,
         false => {
-            eprintln!("{}", format!("Error: Invalid URL format").bold().red());
+            eprintln!("{}", "Error: Invalid URL format".to_string().bold().red());
             exit(0x0100);
         }
     };
@@ -71,7 +67,7 @@ fn parse_cli_args() -> Result<(PathBuf, String, Mode)> {
         false => Mode::Board,
     };
 
-    Ok((path, String::from(target), mode))
+    Ok((path, target.to_string(), mode))
 }
 
 #[tokio::main]
@@ -110,7 +106,7 @@ async fn main() -> Result<()> {
             let mut filecount: usize = 0;
             for url in &thread_data {
                 println!("{}", format!("Parsing JSON from {}", url).bold().blue());
-                let img_data = downloader::get_imagelist(&url, &board_name, &path).await?;
+                let img_data = downloader::get_imagelist(url, &board_name, &path).await?;
                 let total_amt = downloader::get_images(&img_data).await?;
                 filecount += total_amt;
             }
