@@ -1,24 +1,14 @@
-<div align="center">
-    <span><img src="https://github.com/17ms/rusty-downloader/blob/master/docs/ferris.png" width="400"></span>
-</div>
-
-## Imageboard downloader in Rust
-
-<p align="left">
-<a href="https://www.gnu.org/licenses/gpl-3.0"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg"></a>
+<p align="center">
+    <span><img src="https://github.com/17ms/dlrs/blob/master/docs/ferris.png" width="400"></span>
 </p>
 
 ### Installation and usage
 
-Build and run with
+Build and run with `cargo`.
 
-```shell
-cargo run -- <OPTIONS>
 ```
-
-```shell
 USAGE:
-    rusty-downloader --output <PATH> <--thread <URL>|--board <URL>>
+    dlrs --output <PATH> <--thread <URL>|--board <URL>>
 
 OPTIONS:
     -b, --board <URL>      Set a board URL
