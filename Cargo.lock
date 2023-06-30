@@ -116,6 +116,19 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5827cebf4670468b8772dd191856768aedcb1b0278a04f989f7766351917b9dc"
 
 [[package]]
+name = "dlrs"
+version = "0.2.0"
+dependencies = [
+ "clap",
+ "colored",
+ "futures",
+ "regex",
+ "reqwest",
+ "serde_json",
+ "tokio",
+]
+
+[[package]]
 name = "encoding_rs"
 version = "0.8.31"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -689,19 +702,6 @@ dependencies = [
  "wasm-bindgen-futures",
  "web-sys",
  "winreg",
-]
-
-[[package]]
-name = "rusty-downloader"
-version = "0.2.0"
-dependencies = [
- "clap",
- "colored",
- "futures",
- "regex",
- "reqwest",
- "serde_json",
- "tokio",
 ]
 
 [[package]]

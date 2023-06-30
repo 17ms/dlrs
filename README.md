@@ -1,10 +1,10 @@
 <p align="center">
-    <span><img src="https://github.com/17ms/dlrs/blob/master/docs/ferris.png" width="400"></span>
+    <span><img src="https://github.com/17ms/dlrs/blob/master/.github/docs/ferris.png" width="400"></span>
 </p>
 
-### Installation and usage
+### Usage
 
-Build and run with `cargo`.
+Download a [precompiled release](https://github.com/17ms/dlrs/releases) or build from source using `cargo build --release`.
 
 ```
 USAGE:
